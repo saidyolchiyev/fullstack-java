@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Product</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper wrapper--center">
+      <form
+        th:action="@{/products/create}"
+        th:method="POST"
+        th:object="${product}"
+        class="product-form"
+        enctype="multipart/form-data"
+      >
+        <h2 class="product-form__title">Create New Product</h2>
+        <div class="row mb-3">
+          <div class="col-md-6 border">
+            <div class="product-form__field">
+              <label for="product-img-chooser" class="product-form__suptitle"
+                >Product's image</label
+              >
+              <div class="img-field">
+                <input
+                  type="file"
+                  name="productImg"
+                  id="product-img-chooser"
+                  class="product-form__input form-input"
+                  placeholder="Select img for product"
+                  data-target="#product-img-preview"
+                  required
+                />
+                <button
+                  type="button"
+                  class="button button--red modal-toggle"
+                  id="preview"
+                >
+                  Preview
+                </button>
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="brand" class="product-form__suptitle">Brand</label>
+              <input
+                type="text"
+                class="product-form__input form-input"
+                id="brand"
+                placeholder="Enter product's brand"
+                th:field="*{brand}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('brand')}"
+                th:errors="*{brand}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="model" class="product-form__suptitle">Model</label>
+              <input
+                type="text"
+                id="model"
+                class="product-form__input form-input"
+                placeholder="Enter product's model"
+                th:field="*{model}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('model')}"
+                th:errors="*{model}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="ram" class="product-form__suptitle">RAM</label>
+              <input
+                type="number"
+                id="ram"
+                class="product-form__input form-input"
+                placeholder="Enter product's RAM"
+                th:field="*{RAM}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('RAM')}"
+                th:errors="*{RAM}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="cpu" class="product-form__suptitle">CPU</label>
+              <input
+                type="text"
+                id="cpu"
+                class="product-form__input form-input"
+                placeholder="Enter product's CPU"
+                th:field="*{CPU}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('CPU')}"
+                th:errors="*{CPU}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="memory" class="product-form__suptitle">Memory</label>
+              <input
+                type="number"
+                id="memory"
+                class="product-form__input form-input"
+                placeholder="Enter product's memory"
+                th:field="*{memory}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('memory')}"
+                th:errors="*{memory}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product-form__field">
+              <label for="MemoryType" class="product-form__suptitle"
+                >Memory Type</label
+              >
+              <select
+                id="memoryType"
+                class="product-form__input form-input"
+                th:field="*{memoryType}"
+              >
+                <option value="SSD">SSD</option>
+                <option value="HDD">HDD</option>
+              </select>
+            </div>
+            <div class="product-form__field">
+              <label for="conditionType" class="product-form__suptitle"
+                >Condition</label
+              >
+              <select
+                id="conditionType"
+                class="product-form__input form-input"
+                th:field="*{conditionType}"
+              >
+                <option value="New">New</option>
+                <option value="Old">Old</option>
+              </select>
+            </div>
+            <div class="product-form__field">
+              <label for="operatingSystem" class="product-form__suptitle"
+                >Operating System</label
+              >
+              <input
+                type="text"
+                id="operatingSystem"
+                class="product-form__input form-input"
+                placeholder="Enter product's operating system"
+                th:field="*{operatingSystem}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('operatingSystem')}"
+                th:errors="*{operatingSystem}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="graphicsCard" class="product-form__suptitle"
+                >Graphics Card</label
+              >
+              <input
+                type="text"
+                id="graphicsCard"
+                class="product-form__input form-input"
+                placeholder="Enter product's graphics card"
+                th:field="*{graphicsCard}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('graphicsCard')}"
+                th:errors="*{graphicsCard}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="price" class="product-form__suptitle">Price</label>
+              <input
+                type="number"
+                id="price"
+                class="product-form__input form-input"
+                placeholder="Enter product's price"
+                th:field="*{price}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('price')}"
+                th:errors="*{price}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+            <div class="product-form__field">
+              <label for="descriptionText" class="product-form__suptitle"
+                >Description</label
+              >
+              <input
+                type="text"
+                id="descriptionText"
+                class="product-form__input form-input"
+                placeholder="Enter product's description"
+                th:field="*{descriptionText}"
+              />
+              <div
+                class="product-form__error error"
+                th:if="${#fields.hasErrors('descriptionText')}"
+                th:errors="*{descriptionText}"
+              >
+                ERROR MSG
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="button button--black product-form__button">
+          Create
+        </button>
+      </form>
+    </div>
+    <div class="modal" id="preview-modal">
+      <div class="modal__img">
+        <img src="" alt="" id="product-img-preview" />
+      </div>
+      <button class="modal__close modal-toggle">&#x2715;</button>
+    </div>
+  </body>
+  <script type="module" th:src="@{/js/script.js}"></script>
+</html>

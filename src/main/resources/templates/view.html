@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Products</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container pt-5">
+        <div class="home-icon">
+          <a th:href="@{/}"><i class="fas fa-home"></i> Home</a>
+        </div>
+        <div class="title mb-4">Products</div>
+        <div style="text-align: center" th:if="${products.size() == 0}">
+          No product yet
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3" th:each="product : ${products}">
+            <div class="product-card">
+              <div class="product-card__img">
+                <img
+                  th:src="@{/image/{src}(src=${product.img})}"
+                  alt="Product's image"
+                />
+              </div>
+              <div class="product-card__content">
+                <div class="product-card__item" th:text="${product.brand}">
+                  BRAND
+                </div>
+                <div class="product-card__item" th:text="${product.model}">
+                  MODEL
+                </div>
+                <div
+                  class="product-card__item"
+                  th:text="${product.price + '$'}"
+                >
+                  PRICE
+                </div>
+                <div
+                  class="product-card__item"
+                  th:text="${product.user.username}"
+                >
+                  SELLER
+                </div>
+                <div class="product-card__item" th:text="${product.user.phone}">
+                  PHONE NUMBER
+                </div>
+                <a
+                  th:href="@{/view/{id}(id=${product.id})}"
+                  class="button button--black product-card__button"
+                >
+                  See details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div class="wrapper wrapper--center">
+      <div class="reg">
+        <div class="reg__content">
+          <h2 class="reg__title">Login</h2>
+          <form
+            th:action="@{/login}"
+            th:method="POST"
+            class="reg__form form-reg"
+          >
+            <div class="form-reg__field">
+              <input
+                type="text"
+                name="username"
+                class="form-reg__input form-input"
+                placeholder="Enter username"
+                autofocus="autofocus"
+              />
+            </div>
+            <div class="form-reg__field">
+              <input
+                type="password"
+                name="password"
+                class="form-reg__input form-input"
+                placeholder="Enter password"
+              />
+            </div>
+            <button type="submit" class="button button--red reg-form__button">
+              Sign In
+            </button>
+            <a th:href="@{/register}" class="link">Sign Up?</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="profile" th:if="${authenticated}">
+        <div class="profile__icon">
+          <img th:src="@{/image/{src}(src=${user.avatar})}" alt="Avatar" />
+        </div>
+        <div class="profile__username" th:text="${user.username}">USERNAME</div>
+      </div>
+      <div class="router">
+        <div class="container">
+          <h1 class="router__title">Welcome to Shopping Website</h1>
+          <div class="row">
+            <div class="col-md-6 pb-3">
+              <a th:href="@{/}" class="router__item item-router">
+                <div class="item-router__title">
+                  <i class="fas fa-home"></i>
+                  <br />
+                  Home Page
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6 pb-3">
+              <a th:href="@{/view}" class="router__item item-router">
+                <div class="item-router__title">
+                  <i class="fas fa-shopping-cart"></i>
+                  <br />
+                  Buying and selling products
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6 pb-3" th:if="${!authenticated}">
+              <a th:href="@{/login}" class="router__item item-router">
+                <div class="item-router__title">
+                  <i class="fas fa-sign-in-alt"></i>
+                  <br />
+                  Sign In
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6 pb-3" th:if="${!authenticated}">
+              <a th:href="@{/register}" class="router__item item-router">
+                <div class="item-router__title">
+                  <i class="fas fa-user-plus"></i>
+                  <br />
+                  Sign Up
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6 pb-3" th:if="${authenticated}">
+              <a th:href="@{/products}" class="router__item item-router">
+                <div class="item-router__title">
+                  <i class="fas fa-laptop"></i>
+                  <br />
+                  Products
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6 pb-3" th:if="${authenticated}">
+              <a th:href="@{/logout}" class="router__item item-router">
+                <div class="item-router__title">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <br />
+                  Logout
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__content">
+            Made With <i class="fas fa-heart"></i> by Said
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Details</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="detail">
+        <div class="detail__header header-detail">
+          <a th:href="@{/}" class="header-detail__link"
+            ><i class="fas fa-home"></i> Home</a
+          >
+          <div class="header-detail__bg bg">
+            <img
+              th:src="@{/image/{src}(src=${product.img})}"
+              alt="Product's img"
+              hidden
+            />
+          </div>
+        </div>
+        <div class="detail__content">
+          <h2 class="detail__title">Details</h2>
+          <hr />
+          <h4 class="detail__text">
+            <strong th:text="${product.price + '$'}">PRICE</strong>
+          </h4>
+          <div class="detail__text" th:text="${product.descriptionText}">
+            DESCRIPTION
+          </div>
+          <table class="detail__table table w-100">
+            <tbody>
+              <tr>
+                <td>Brand</td>
+                <td th:text="${product.brand}">BRAND</td>
+              </tr>
+              <tr>
+                <td>Model</td>
+                <td th:text="${product.model}">MODEL</td>
+              </tr>
+              <tr>
+                <td>RAM</td>
+                <td th:text="${product.RAM}">RAM</td>
+              </tr>
+              <tr>
+                <td>CPU</td>
+                <td th:text="${product.CPU}">CPU</td>
+              </tr>
+              <tr>
+                <td>Memory</td>
+                <td th:text="${product.memory}">MEMORY</td>
+              </tr>
+              <tr>
+                <td>Memory Type</td>
+                <td th:text="${product.memoryType}">MEMORY TYPE</td>
+              </tr>
+              <tr>
+                <td>Condition</td>
+                <td th:text="${product.conditionType}">CONDITION TYPE</td>
+              </tr>
+              <tr>
+                <td>Operating System</td>
+                <td th:text="${product.operatingSystem}">OEPRATING SYSTEM</td>
+              </tr>
+              <tr>
+                <td>Graphics Card</td>
+                <td th:text="${product.graphicsCard}">GRAPHICS CARD</td>
+              </tr>
+              <tr>
+                <td>Seller</td>
+                <td th:text="${product.user.username}">SELLER</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td th:text="${product.user.email}">EMAIL</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td th:text="${product.user.phone}">PHONE</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" th:src="@{/js/script.js}"></script>
+</html>
